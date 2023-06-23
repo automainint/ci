@@ -58,5 +58,5 @@ jobs:
         shell: bash
         working-directory: ${{ github.workspace }}/kit
         run: |
-          emcmake -D CMAKE_BUILD_TYPE=${{ matrix.build_type }} -B build -S .
+          emcmake cmake -D CMAKE_BUILD_TYPE=${{ matrix.build_type }} -B build -S .
           cmake --build build --config ${{ matrix.build_type }}
