@@ -47,7 +47,7 @@ jobs:
 
     steps:
       - name: Setup Emscripten
-      - uses: mymindstorm/setup-emsdk@v12
+        uses: mymindstorm/setup-emsdk@v12
 
       - name: Checkout
         shell: bash
