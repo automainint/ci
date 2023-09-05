@@ -28,4 +28,4 @@ jobs:
         shell: bash
         working-directory: ${{ github.workspace }}/kit
         run: |
-          sh build_and_test.sh
+          sh build_and_test.sh || exit 1
