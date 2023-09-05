@@ -13,7 +13,7 @@ jobs:
   build:
     strategy:
       matrix:
-        build_type: [ Debug, Release ]
+        build_type: [ debug, release ]
         os: [ ubuntu-latest, macos-latest, windows-2019 ]
   
     runs-on: ${{ matrix.os }}
@@ -31,4 +31,4 @@ jobs:
         shell: bash
         working-directory: ${{ github.workspace }}/kit
         run: |
-          sh build_and_test.sh || exit 1
+          sh build_and_test.sh ${{ matrix.build_type }} || exit 1
