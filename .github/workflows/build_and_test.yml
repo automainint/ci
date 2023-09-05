@@ -24,39 +24,8 @@ jobs:
         run: |
           git clone https://guattari.tech/kit.git
 
-      - name: Build
+      - name: Build and test
         shell: bash
         working-directory: ${{ github.workspace }}/kit
         run: |
-          cmake -D CMAKE_BUILD_TYPE=${{ matrix.build_type }} -B build -S .
-          cmake --build build --config ${{ matrix.build_type }}
-
-      - name: Run tests
-        shell: bash
-        working-directory: ${{ github.workspace }}/kit/build
-        run: |
-          ctest -V -C ${{ matrix.build_type }}
-  
-  build_emscripten:
-    strategy:
-      matrix:
-        build_type: [ Debug, Release ]
-        os: [ ubuntu-latest ]
-
-    runs-on: ${{ matrix.os }}
-
-    steps:
-      - name: Setup Emscripten
-        uses: mymindstorm/setup-emsdk@v12
-
-      - name: Checkout
-        shell: bash
-        run: |
-          git clone https://guattari.tech/kit.git
-
-      - name: Build
-        shell: bash
-        working-directory: ${{ github.workspace }}/kit
-        run: |
-          emcmake cmake -D CMAKE_BUILD_TYPE=${{ matrix.build_type }} -D KIT_ENABLE_TESTING=OFF -B build -S .
-          cmake --build build --config ${{ matrix.build_type }}
+          sh build_and_test.sh
