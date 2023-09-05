@@ -57,6 +57,6 @@ jobs:
 
       - name: Build and test
         shell: bash
-        working-directory: ${{ github.workspace }}/kit
+        working-directory: ${{ github.workspace }}/fair
         run: |
           sh build_and_test.sh ${{ matrix.build_type }} || exit 1
