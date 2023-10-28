@@ -46,24 +46,3 @@ jobs:
         working-directory: ${{ github.workspace }}/kit
         run: |
           sh build_and_test.sh ${{ matrix.build_type }} gcc || exit 1
-  fair:
-    strategy:
-      matrix:
-        build_type: [ debug, release ]
-        os: [ ubuntu-latest ]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Checkout
-        shell: bash
-        run: |
-          git clone https://guattari.tech/fair.git
-      - name: Setup MSVC Env
-        if: runner.os == 'Windows'
-        uses: TheMrMilchmann/setup-msvc-dev@v2.0.1
-        with:
-          arch: x64
-      - name: Build and test
-        shell: bash
-        working-directory: ${{ github.workspace }}/fair
-        run: |
-          sh build_and_test.sh ${{ matrix.build_type }} || exit 1
