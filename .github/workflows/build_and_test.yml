@@ -30,7 +30,7 @@ jobs:
         shell: bash
         working-directory: ${{ github.workspace }}/kit
         run: |
-          sh build_and_test.sh ${{ matrix.build_type }} || exit 1
+          sh build_and_test.sh --type ${{ matrix.build_type }} || exit 1
   kit_mingw:
     strategy:
       matrix:
@@ -45,4 +45,4 @@ jobs:
         shell: bash
         working-directory: ${{ github.workspace }}/kit
         run: |
-          sh build_and_test.sh ${{ matrix.build_type }} gcc || exit 1
+          sh build_and_test.sh --type ${{ matrix.build_type }} --compiler gcc || exit 1
