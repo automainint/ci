@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         shell: bash
         run: |
-          git clone https://guattari.tech/kit.git
+          git clone --depth 1 https://guattari.tech/kit.git
       - name: Setup MSVC Env
         if: runner.os == 'Windows'
         uses: TheMrMilchmann/setup-msvc-dev@v2.0.1
@@ -40,7 +40,7 @@ jobs:
       - name: Checkout
         shell: bash
         run: |
-          git clone https://guattari.tech/kit.git
+          git clone --depth 1 https://guattari.tech/kit.git
       - name: Build and test
         shell: bash
         working-directory: ${{ github.workspace }}/kit
